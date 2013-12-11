@@ -10,12 +10,17 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          <%= link_to "Dealyzator", '#', id: "logo" %>
+          <%= link_to "Dealyzator", root_path, id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Help",    '#' %></li>
-              <li><%= link_to "Sign in", '#' %></li>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Users",    users_index_path %></li>
+              <% if user_signed_in? %>
+								<li><%= link_to "Edit my profile", edit_user_registration_path %></li>
+								<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+							<% else %>	
+								<li><%= link_to "Sign in", new_user_session_path %></li>
+							<% end %>
             </ul>
           </nav>
         </div>
@@ -26,8 +31,7 @@
     </div>
     <footer class="footer">
   <small>
-    <a href="http://railstutorial.org/">Rails Tutorial</a>
-    by Michael Hartl
+    <a href="http://vk.com/nikon_one">Neck Varentsov</a>
   </small>
   <nav>
     <ul>
